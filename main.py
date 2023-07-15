@@ -7,15 +7,14 @@ pygame.init()
 # create a display surface object which is the window the players will see
 # set_mode() is a function that creates a display surface object
 # set_mode() should receive at least one argument which is a tuple of width and height
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((800, 400))
 # set the title of the window
 pygame.display.set_caption(TITLE)
 # create a clock object to control the frame rate
 clock = pygame.time.Clock()
-# create a surface object to show a color on the screen
-test_surface = pygame.Surface((100, 200))
-# fill the surface with a color
-test_surface.fill((255, 0, 0))
+# creating a sky image surface object
+sky_surface = pygame.image.load(SKY)
+ground_surface = pygame.image.load(GROUND)
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -34,7 +33,8 @@ while True:
     
     # now we want to display our surface on the screen
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
-    screen.blit(test_surface, (200, 100))
+    screen.blit(sky_surface, (0, 0))
+    screen.blit(ground_surface, (0, 300))
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
