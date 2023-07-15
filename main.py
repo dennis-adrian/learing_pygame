@@ -1,4 +1,5 @@
 import pygame
+from utils.constants import *
 
 # important to initialize pygame before using any of its features
 pygame.init()
@@ -7,6 +8,10 @@ pygame.init()
 # set_mode() is a function that creates a display surface object
 # set_mode() should receive at least one argument which is a tuple of width and height
 screen = pygame.display.set_mode((800, 600))
+# set the title of the window
+pygame.display.set_caption(TITLE)
+# create a clock object to control the frame rate
+clock = pygame.time.Clock()
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -26,3 +31,7 @@ while True:
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
+    # we need to control the frame rate of the game
+    # we do this by calling the tick() method of the clock object
+    # we pass the FPS constant as an argument to the tick() method
+    clock.tick(FPS)
