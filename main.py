@@ -12,6 +12,10 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption(TITLE)
 # create a clock object to control the frame rate
 clock = pygame.time.Clock()
+# create a surface object to show a color on the screen
+test_surface = pygame.Surface((100, 200))
+# fill the surface with a color
+test_surface.fill((255, 0, 0))
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -27,7 +31,10 @@ while True:
             # generally we will import it (from sys import exit)
             # but since we're not going to use it anywhere else we can just call it directly
             exit()
-
+    
+    # now we want to display our surface on the screen
+    # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
+    screen.blit(test_surface, (200, 100))
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
