@@ -70,7 +70,9 @@ while True:
     # detect if the player collides with the mouse pointer
     mouse_pos = pygame.mouse.get_pos()
     if player_rect.collidepoint(mouse_pos):
-        print("collision with mouse")
+        # the pygame.mouse.get_pressed() method returns a tuple with 3 boolean values
+        # (pressed left click, pressed middle click, pressed right click)
+        print(pygame.mouse.get_pressed())
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
