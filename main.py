@@ -49,6 +49,12 @@ while True:
             # generally we will import it (from sys import exit)
             # but since we're not going to use it anywhere else we can just call it directly
             exit()
+        if event.type == pygame.MOUSEMOTION:
+            print(event.pos)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print('mouse down')
+        if event.type == pygame.MOUSEBUTTONUP:
+            print('mouse up')
 
     # now we want to display our surface on the screen
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
