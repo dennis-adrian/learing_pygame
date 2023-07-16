@@ -16,8 +16,9 @@ clock = pygame.time.Clock()
 test_font = pygame.font.Font(FONT_TYPE, 50)
 
 # creating a sky image surface object
-sky_surface = pygame.image.load(SKY)
-ground_surface = pygame.image.load(GROUND)
+# it's a good idea for performance to convert images to a format that is easier for pygame to work with
+sky_surface = pygame.image.load(SKY).convert()
+ground_surface = pygame.image.load(GROUND).convert()
 # creating a text surface object
 # the render method takes 3 arguments:
 # 1. the text to be rendered
@@ -25,7 +26,7 @@ ground_surface = pygame.image.load(GROUND)
 # 3. a color
 text_surface = test_font.render("Hello World!", False, 'Black')
 # creating an image that will be animated
-snail_surface = pygame.image.load(SNAIL)
+snail_surface = pygame.image.load(SNAIL).convert_alpha()
 snail_x_pos = SNAIL_INITIAL_X_POS
 
 while True:
@@ -49,9 +50,8 @@ while True:
     screen.blit(ground_surface, (0, 300))
     screen.blit(text_surface, (300, 50))
     snail_x_pos -= SNAIL_MOVE_SPEED
+    if snail_x_pos <= -100: snail_x_pos = SNAIL_INITIAL_X_POS
     screen.blit(snail_surface, (snail_x_pos, 250))
-    if snail_x_pos <= -100:
-        snail_x_pos = SNAIL_INITIAL_X_POS
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
