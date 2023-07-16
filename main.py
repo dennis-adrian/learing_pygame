@@ -62,6 +62,10 @@ while True:
     screen.blit(snail_surface, snail_rect)
     # since we have a rectangle for the player_surface we can use that to position it on the screen
     screen.blit(player_surface, player_rect)
+    # detect if the player collides with the snail
+    # the colliderect() method will retun either 1 or 0
+    if player_rect.colliderect(snail_rect):
+        print("colission")
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
