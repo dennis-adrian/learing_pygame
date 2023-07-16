@@ -27,12 +27,13 @@ ground_surface = pygame.image.load(GROUND).convert()
 text_surface = test_font.render("Hello World!", False, 'Black')
 # creating an image that will be animated
 snail_surface = pygame.image.load(SNAIL).convert_alpha()
-snail_x_pos = SNAIL_INITIAL_X_POS
+# creating snail rectangle object
+snail_rect = snail_surface.get_rect(bottomright=(SNAIL_INITIAL_X_POS, GROUND_Y_POS))
 # creating a player surface with its rect object
 player_surface = pygame.image.load(PLAYER).convert_alpha()
 # get_rect() is a method that takes the surface of the object and draws a rectangle around it
 # and in order to position the rectangle we can use any of the available points
-player_rect = player_surface.get_rect(midbottom=(80, GROUND_X_POS))
+player_rect = player_surface.get_rect(midbottom=(80, GROUND_Y_POS))
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -52,11 +53,13 @@ while True:
     # now we want to display our surface on the screen
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
     screen.blit(sky_surface, (0, 0))
-    screen.blit(ground_surface, (0, GROUND_X_POS))
+    screen.blit(ground_surface, (0, GROUND_Y_POS))
     screen.blit(text_surface, (300, 50))
-    snail_x_pos -= SNAIL_MOVE_SPEED
-    if snail_x_pos <= -100: snail_x_pos = SNAIL_INITIAL_X_POS
-    screen.blit(snail_surface, (snail_x_pos, 250))
+
+    # we want to move the snail to the left
+    snail_rect.x -= SNAIL_MOVE_SPEED
+    if snail_rect.right <= 0: snail_rect.left = 800
+    screen.blit(snail_surface, snail_rect)
     # since we have a rectangle for the player_surface we can use that to position it on the screen
     screen.blit(player_surface, player_rect)
 

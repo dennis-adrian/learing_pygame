@@ -2,7 +2,7 @@ TITLE = "Learning Pygame"
 FPS = 60
 SNAIL_INITIAL_X_POS = 800
 SNAIL_MOVE_SPEED = 4
-GROUND_X_POS = 300
+GROUND_Y_POS = 300
 
 # Assets paths
 SKY = "assets/graphics/Sky.png"
