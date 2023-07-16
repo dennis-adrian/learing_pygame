@@ -12,9 +12,18 @@ screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption(TITLE)
 # create a clock object to control the frame rate
 clock = pygame.time.Clock()
+# creating a font object
+test_font = pygame.font.Font(FONT_TYPE, 50)
+
 # creating a sky image surface object
 sky_surface = pygame.image.load(SKY)
 ground_surface = pygame.image.load(GROUND)
+# creating a text surface object
+# the render method takes 3 arguments:
+# 1. the text to be rendered
+# 2. a boolean value that enables or disables anti-aliasing (smoothing of the text edges)
+# 3. a color
+text_surface = test_font.render("Hello World!", False, 'Black')
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -35,6 +44,7 @@ while True:
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
     screen.blit(sky_surface, (0, 0))
     screen.blit(ground_surface, (0, 300))
+    screen.blit(text_surface, (300, 50))
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
