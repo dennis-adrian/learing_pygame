@@ -24,6 +24,9 @@ ground_surface = pygame.image.load(GROUND)
 # 2. a boolean value that enables or disables anti-aliasing (smoothing of the text edges)
 # 3. a color
 text_surface = test_font.render("Hello World!", False, 'Black')
+# creating an image that will be animated
+snail_surface = pygame.image.load(SNAIL)
+snail_x_pos = SNAIL_INITIAL_X_POS
 
 while True:
     # inside this loop we're going to draw all our elements
@@ -45,6 +48,10 @@ while True:
     screen.blit(sky_surface, (0, 0))
     screen.blit(ground_surface, (0, 300))
     screen.blit(text_surface, (300, 50))
+    snail_x_pos -= SNAIL_MOVE_SPEED
+    screen.blit(snail_surface, (snail_x_pos, 250))
+    if snail_x_pos <= -100:
+        snail_x_pos = SNAIL_INITIAL_X_POS
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
