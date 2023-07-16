@@ -49,12 +49,8 @@ while True:
             # generally we will import it (from sys import exit)
             # but since we're not going to use it anywhere else we can just call it directly
             exit()
-        if event.type == pygame.MOUSEMOTION:
-            print(event.pos)
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            print('mouse down')
-        if event.type == pygame.MOUSEBUTTONUP:
-            print('mouse up')
+        if event.type == pygame.MOUSEMOTION and player_rect.collidepoint(event.pos):
+            print("collision on:", event.pos)
 
     # now we want to display our surface on the screen
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
@@ -72,13 +68,6 @@ while True:
     # the colliderect() method will retun either 1 or 0
     # if player_rect.colliderect(snail_rect):
     #     print("colission")
-
-    # detect if the player collides with the mouse pointer
-    mouse_pos = pygame.mouse.get_pos()
-    if player_rect.collidepoint(mouse_pos):
-        # the pygame.mouse.get_pressed() method returns a tuple with 3 boolean values
-        # (pressed left click, pressed middle click, pressed right click)
-        print(pygame.mouse.get_pressed())
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
