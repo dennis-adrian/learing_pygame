@@ -49,7 +49,7 @@ while True:
             # generally we will import it (from sys import exit)
             # but since we're not going to use it anywhere else we can just call it directly
             exit()
-    
+
     # now we want to display our surface on the screen
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
     screen.blit(sky_surface, (0, 0))
@@ -64,8 +64,13 @@ while True:
     screen.blit(player_surface, player_rect)
     # detect if the player collides with the snail
     # the colliderect() method will retun either 1 or 0
-    if player_rect.colliderect(snail_rect):
-        print("colission")
+    # if player_rect.colliderect(snail_rect):
+    #     print("colission")
+
+    # detect if the player collides with the mouse pointer
+    mouse_pos = pygame.mouse.get_pos()
+    if player_rect.collidepoint(mouse_pos):
+        print("collision with mouse")
 
     # we update the display at the end of the loop so that any changes made are reflected on the screen
     pygame.display.update()
