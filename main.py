@@ -24,7 +24,8 @@ ground_surface = pygame.image.load(GROUND).convert()
 # 1. the text to be rendered
 # 2. a boolean value that enables or disables anti-aliasing (smoothing of the text edges)
 # 3. a color
-text_surface = test_font.render("Hello World!", False, 'Black')
+score_surface = test_font.render("Hello World!", False, 'Black')
+score_rect = score_surface.get_rect(center=(400, 50))
 # creating an image that will be animated
 snail_surface = pygame.image.load(SNAIL).convert_alpha()
 # creating snail rectangle object
@@ -56,7 +57,7 @@ while True:
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
     screen.blit(sky_surface, (0, 0))
     screen.blit(ground_surface, (0, GROUND_Y_POS))
-    screen.blit(text_surface, (300, 50))
+    screen.blit(score_surface, score_rect)
 
     # we want to move the snail to the left
     snail_rect.x -= SNAIL_MOVE_SPEED
