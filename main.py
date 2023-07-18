@@ -24,7 +24,7 @@ ground_surface = pygame.image.load(GROUND).convert()
 # 1. the text to be rendered
 # 2. a boolean value that enables or disables anti-aliasing (smoothing of the text edges)
 # 3. a color
-score_surface = test_font.render("Hello World!", False, 'Black')
+score_surface = test_font.render("Hello World!", False, (64,64,64))
 score_rect = score_surface.get_rect(center=(400, 50))
 # creating an image that will be animated
 snail_surface = pygame.image.load(SNAIL).convert_alpha()
@@ -57,6 +57,19 @@ while True:
     # blit stands for block image transfer and it's just a fancy way to say we want to put one surface on top of another
     screen.blit(sky_surface, (0, 0))
     screen.blit(ground_surface, (0, GROUND_Y_POS))
+    # with the draw module we can specify what type of shape we're drawing and rectangles is on of those shapes
+    # we need to specify 3 arguments
+    # 1. the surface we want to draw on
+    # 2. the color of the shape
+    # 3. the rectangle object
+    # we can specify some extra arguments that are options
+    # 4. would the the width of the line we're drawing
+    # the problem with this is that once we specify the width,
+    # only a 'border' with that width is drawn and the rest of the rectangle is no longer filled
+    # we can fix this by having 2 drawings, one for the border and one for the fill
+    pygame.draw.rect(screen, '#c0e8ec', score_rect)
+    # the drawing with border will help us recreate a sort of padding around the text
+    pygame.draw.rect(screen, '#c0e8ec', score_rect, 10)
     screen.blit(score_surface, score_rect)
 
     # we want to move the snail to the left
